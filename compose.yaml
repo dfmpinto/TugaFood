@@ -1,0 +1,9 @@
+services:
+  postgres_registration:
+    container_name: postgres_registration_tugafood
+    image: postgres:16.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
