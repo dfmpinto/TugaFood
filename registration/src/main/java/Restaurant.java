@@ -27,4 +27,14 @@ public class Restaurant extends PanacheEntityBase {
 
     @UpdateTimestamp
     public Date updatedAt;
+
+    public Restaurant() {
+
+    }
+
+    public Restaurant(String newRestaurant, String proprietary, String vatNumber) {
+        this.name = newRestaurant;
+        this.proprietary = proprietary;
+        this.vatNumber = vatNumber;
+    }
 }
