@@ -1,13 +1,15 @@
 import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.QuarkusIntegrationTest;
 
+import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.core.MediaType;
 import org.junit.jupiter.api.*;
 
-@QuarkusTest
+@QuarkusIntegrationTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @QuarkusTestResource(RegistrationTestLifecycleManager.class)
 public class RestaurantResourceIT {
@@ -20,7 +22,6 @@ public class RestaurantResourceIT {
     @Order(1)
     public void testGetRestaurants() {
         given().when().get("/restaurants").then().statusCode(200);
-
     }
 
     @Test
@@ -36,6 +37,7 @@ public class RestaurantResourceIT {
 
     @Test
     @Order(3)
+    @Transactional
     public void testUpdateRestaurant() {
         Restaurant restaurantDTO = new Restaurant();
         restaurantDTO.name = "New Restaurant";

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class RegistrationTestLifecycleManager implements QuarkusTestResourceLifecycleManager {
 
-    public static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer<>("postgres:16.1")
+    public static final PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>("postgres:16.1")
             .withEnv("POSTGRES_USER", "admin")
             .withEnv("POSTGRES_PASSWORD", "admin")
             .withEnv("POSTGRES_DB", "restaurant")
